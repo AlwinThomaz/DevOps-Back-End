@@ -16,9 +16,9 @@ pipeline {
                 sh "mvn test"
             }
         }
-        stage('--install--') {
+        stage('--package--') {
             steps {
-                sh "mvn install"
+                sh "mvn package"
             }
         }
         stage('Building image') {
