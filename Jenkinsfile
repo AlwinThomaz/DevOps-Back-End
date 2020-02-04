@@ -1,25 +1,23 @@
 pipeline {
     agent any
     stages {
-        stage('---clean---') {
-            steps {
-                sh "mvn clean"
+    
+        stage('--Mvn clean package--') {
+                steps {
+                    sh "mvn clean package deploy"
+                    }
             }
-        }
-        stage('--test--') {
-            steps {
-                sh "mvn test"
+            stage('--Build back-end--') {
+                steps {
+                    sh "docker build -t app-test ."
+                    }
             }
-        }
-        stage('--package--') {
-            steps {
-                sh "mvn package"
-            }
-        }
-        stage('--deploy--') {
-            steps {
-                sh "mvn deploy"
-            }
-        }
+        stage('--Deploy--') {
+              steps {
+                    sh "docker login -u ${env.DOCKER_USER} -p ${env.DOCKER_PSSWRD}"
+                    sh "docker tag app-test alwinthomas/app-test"
+                    sh "docker push alwinthomas/app-test"
+                    }
+              }
     }
 }
