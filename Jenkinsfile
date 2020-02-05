@@ -1,17 +1,23 @@
 pipeline {
     agent any
     stages {
-       stage('--docker-build--') {
+    
+        stage('--Mvn clean package--') {
+                steps {
+                    sh "mvn clean package deploy"
+                    }
+            }
+            stage('--docker-build--') {
           steps {
-            sh 'docker build -t alwinthomas/app-backend .'
+            sh 'docker build -t alwinthomas/app-frontend .'
           }
         }
         stage('--docker-publish--') {
           steps {
               withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
-              sh 'docker push alwinthomas/app-backend:latest'
+              sh 'docker push alwinthomas/app-frontend:latest'
               }
           }
         }
-   }
- }
+    }
+}
