@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages {
     
-        stage('--Mvn clean package--') {
+        stage('--Mvn clean package deploy--') {
                 steps {
                     sh "mvn clean package deploy"
                     }
