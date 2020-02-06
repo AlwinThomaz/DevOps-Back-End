@@ -18,6 +18,7 @@ pipeline {
               sh 'docker push alwinthomas/app-backend:latest'
               }
           }
+        }
           
         stage('--ssh--') {
             steps {
