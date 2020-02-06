@@ -28,7 +28,7 @@ pipeline {
         }
           stage('--ssh production--') {
             steps {
-            	sh "ssh -T -i /home/jenkins/back-end-RDS.pem ec2-3-10-117-76.eu-west-2.compute.amazonaws.com ./BE-Prod.sh"
+            	sh "ssh -T -i /home/jenkins/master.pem ec2-3-10-117-76.eu-west-2.compute.amazonaws.com ./BE-Prod.sh"
             }
         }
     }
