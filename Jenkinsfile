@@ -23,12 +23,12 @@ pipeline {
           
         stage('--ssh test--') {
             steps {
-            	sh "ssh -T -i /home/jenkins/back-end-RDS.pem ubuntu@ec2-3-8-173-215.eu-west-2.compute.amazonaws.com ./BE-Master-script.sh"
+            	sh "ssh -T -i /home/jenkins/back-end-RDS.pem ubuntu@ec2-3-8-136-251.eu-west-2.compute.amazonaws.com ./BE-Master-script.sh"
             }
         }
           stage('--ssh production--') {
             steps {
-            	sh "ssh -T -i /home/jenkins/master.pem ubuntu@ec2-3-10-117-76.eu-west-2.compute.amazonaws.com ./BE-Prod.sh"
+            	sh "ssh -T -i /home/jenkins/master.pem ubuntu@ec2-3-8-160-51.eu-west-2.compute.amazonaws.com ./BE-Prod.sh"
             }
         }
     }
